@@ -1,6 +1,7 @@
 
 FROM dramaturg/centos-systemd
 MAINTAINER Sebastian Krohn <seb@gaia.sunn.de>
+ENV MYSQL_J_VER '5.1.44'
 
 # dependencies
 RUN rpm --import http://li.nux.ro/download/nux/RPM-GPG-KEY-nux.ro && \
@@ -16,6 +17,8 @@ RUN curl -L https://storage.googleapis.com/google-code-archive-downloads/v2/code
     unzip /opt/jodconverter-core-3.0-beta-4-dist.zip -d /opt && \
     rm -f /opt/jodconverter-core-3.0-beta-4-dist.zip && \
     cd /opt && ln -s jodconverter-core-3.0-beta-4 jod
+
+RUN wget http://repo1.maven.org/maven2/mysql/mysql-connector-java/${MYSQL_J_VER}/mysql-connector-java-${MYSQL_J_VER}.jar -P /opt/apache-openmeetings/webapps/openmeetings/WEB-INF/lib
 
 
 # openmeetings itself
