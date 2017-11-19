@@ -26,7 +26,7 @@ ADD apache-openmeetings.tar.gz /opt/apache-openmeetings
 ADD apache-openmeetings.service /etc/systemd/system/
 RUN systemctl enable apache-openmeetings.service
 ENV RED5_HOME /opt/apache-openmeetings
-
+RUN /opt/apache-openmeetings/red5.sh
 # run
 EXPOSE 5080 5443 1935 8088 8443 8081
 
